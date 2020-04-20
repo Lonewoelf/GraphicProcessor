@@ -28,9 +28,11 @@ An added bonus is that there seem to be more examples for OpenGL than for OpenCL
 <a name="GL"></a>
 ## Information on OpenGL
 
-sources: <br>
+Sources: <br>
 https://en.wikipedia.org/wiki/OpenGL <br>
-https://learnopengl.com/Getting-started/OpenGL
+https://learnopengl.com/Getting-started/OpenGL <br>
+https://www.khronos.org/opengl/wiki/Getting_Started#Downloading_OpenGL <br>
+https://www.absingh.com/opengl/
 
 Fun Examples: <br>
 https://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction <br>
