@@ -58,3 +58,5 @@ Maybe creating a water pool with some terrain around it? possibly with user inte
 Started researching how 3D water is created in OpenGL <br>
 Started trying out: https://www.gamedev.net/reference/articles/article915.asp <br>
 Finished part 1 of the tutorial <br>
+Found out that the tutorial does not uses OpenGL. <br>
+Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map
