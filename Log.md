@@ -37,6 +37,7 @@ https://www.absingh.com/opengl/
 Fun Examples: <br>
 
 1. Terrain generation: https://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction <br>
+[Later found out this tutorial is too old to be compiled with the current VS version] <br>
 
 Example terrain: <br>
 ![Simple terrain](/Images/SimpleTerrain.jpg)
