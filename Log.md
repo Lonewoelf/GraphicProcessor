@@ -60,3 +60,4 @@ Started trying out: https://www.gamedev.net/reference/articles/article915.asp <b
 Finished part 1 of the tutorial <br>
 Found out that the tutorial does not uses OpenGL. <br>
 Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map
+Started looking at Examples\Terrain+Water_tutorial\Height Map + Started creating my own
