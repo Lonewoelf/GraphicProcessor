@@ -57,3 +57,4 @@ Maybe creating a water pool with some terrain around it? possibly with user inte
 [25-04-2020]
 Started researching how 3D water is created in OpenGL
 Started trying out: https://www.gamedev.net/reference/articles/article915.asp
+Finished part 1 of the tutorial
