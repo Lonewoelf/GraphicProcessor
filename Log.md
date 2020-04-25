@@ -41,7 +41,9 @@ Fun Examples: <br>
 Example terrain: <br>
 ![Simple terrain](/Images/SimpleTerrain.jpg)
 
-2. 3D Water: https://www.youtube.com/watch?v=HusvGeEDU_U&list=PLRIWtICgwaX23jiqVByUs0bqhnalNTNZh <br>
+2. 3D Water: <br>
+   https://www.gamedev.net/reference/articles/article915.asp <br>
+   Water generation seems to rely on Perlin Noise algorithm quite often.
 
 
 <a name="Goal"></a>
@@ -53,4 +55,5 @@ Maybe creating a water pool with some terrain around it? possibly with user inte
 ## Path to Goal
 
 [25-04-2020]
-Started following the 3D water turtorial in OpenGL, mentioned in point 2 of Fun Examples.
+Started researching how 3D water is created in OpenGL
+Started trying out: https://www.gamedev.net/reference/articles/article915.asp
