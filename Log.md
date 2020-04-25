@@ -35,10 +35,25 @@ https://www.khronos.org/opengl/wiki/Getting_Started#Downloading_OpenGL <br>
 https://www.absingh.com/opengl/
 
 Fun Examples: <br>
-https://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction <br>
+
+1. Terrain generation: https://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction <br>
+
+Example terrain: <br>
+![Simple terrain](/Images/SimpleTerrain.jpg)
+
+2. 3D Water: <br>
+   https://www.gamedev.net/reference/articles/article915.asp <br>
+   Water generation seems to rely on Perlin Noise algorithm quite often.
+
 
 <a name="Goal"></a>
 ## Goal
 
+Maybe creating a water pool with some terrain around it? possibly with user interaction, maybe flying through the created terrain?
+
 <a name="PtG"></a>
 ## Path to Goal
+
+[25-04-2020]
+Started researching how 3D water is created in OpenGL
+Started trying out: https://www.gamedev.net/reference/articles/article915.asp
