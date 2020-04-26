@@ -63,5 +63,5 @@ Found out that the tutorial does not uses OpenGL. <br>
 Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map <br>
 Started looking at Examples\Terrain+Water_tutorial\Height Map + Started creating my own
 
-[26-04-2020]
+[26-04-2020] <br>
 Continued creating my own 3D terrain (Loading in RAW file)
