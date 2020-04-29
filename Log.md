@@ -69,4 +69,4 @@ Continued creating my own 3D terrain (Loading in RAW file)
 [29-04-2020] <br>
 The example file is not easy to read, so I tried finding other tutorials. <br>
 https://www2.unil.ch/biomapper/opengl/Landscapes.html <br>
-https://www.swiftless.com/terraintuts.html
+Started WaterScape2 following: https://www.swiftless.com/terraintuts.html
