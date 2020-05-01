@@ -70,3 +70,8 @@ Continued creating my own 3D terrain (Loading in RAW file)
 The example file is not easy to read, so I tried finding other tutorials. <br>
 https://www2.unil.ch/biomapper/opengl/Landscapes.html <br>
 Started WaterScape2 following: https://www.swiftless.com/terraintuts.html
+
+[01-05-2020] <br>
+Installed freeglut, glew and glfw.
+freeglut is the newer version of GLUT (1998), but isn't standard installed in VS19. <br>
+documentation for the installation was mostly deprecated.
