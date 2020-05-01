@@ -37,6 +37,7 @@ https://www.absingh.com/opengl/
 Fun Examples: <br>
 
 1. Terrain generation: https://www.codeproject.com/Articles/14154/OpenGL-Terrain-Generation-An-Introduction <br>
+[Later found out this tutorial is too old to be compiled with the current VS version] <br>
 
 Example terrain: <br>
 ![Simple terrain](/Images/SimpleTerrain.jpg)
@@ -59,4 +60,13 @@ Started researching how 3D water is created in OpenGL <br>
 Started trying out: https://www.gamedev.net/reference/articles/article915.asp <br>
 Finished part 1 of the tutorial <br>
 Found out that the tutorial does not uses OpenGL. <br>
-Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map
+Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map <br>
+Started looking at Examples\Terrain+Water_tutorial\Height Map + Started creating my own
+
+[26-04-2020] <br>
+Continued creating my own 3D terrain (Loading in RAW file)
+
+[29-04-2020] <br>
+The example file is not easy to read, so I tried finding other tutorials. <br>
+https://www2.unil.ch/biomapper/opengl/Landscapes.html <br>
+Started WaterScape2 following: https://www.swiftless.com/terraintuts.html
