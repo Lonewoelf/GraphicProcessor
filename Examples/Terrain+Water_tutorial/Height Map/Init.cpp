@@ -251,7 +251,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hprev, PSTR cmdline, int ishow
 	
 	// Create our window with our function we create that passes in the:
 	// name, width, height, any flags for the window, if we want fullscreen of not, and the hInstance.
-	hWnd = CreateMyWindow("www.GameTutorials.com - Height Map", SCREEN_WIDTH, SCREEN_HEIGHT, 0, g_bFullScreen, hInstance);
+	hWnd = CreateMyWindow("GameTutorials", SCREEN_WIDTH, SCREEN_HEIGHT, 0, true, hInstance);
 
 	// If we never got a valid window handle, quit the program
 	if(hWnd == NULL) return TRUE;

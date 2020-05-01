@@ -2,11 +2,14 @@
 //
 
 #include <iostream>
+#include "WaterScape.h"
 #include "Water.h"
+#include "Terrain.h"
+#include "Camera.h"
+
 int main()
 {
-    Water water;
-    water.updateWaveMap();
+	return 0;
 }
 
 

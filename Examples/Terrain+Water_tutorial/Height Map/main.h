@@ -67,8 +67,8 @@ public:
 /////// * /////////// * /////////// * NEW * /////// * /////////// * /////////// *
 
 
-#define SCREEN_WIDTH 800								// We want our screen width 800 pixels
-#define SCREEN_HEIGHT 600								// We want our screen height 600 pixels
+#define SCREEN_WIDTH 1920								// We want our screen width 800 pixels
+#define SCREEN_HEIGHT 1080								// We want our screen height 600 pixels
 #define SCREEN_DEPTH 16									// We want 16 bits per pixel
 
 extern bool  g_bFullScreen;								// Set full screen as default
