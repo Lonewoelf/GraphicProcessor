@@ -26,19 +26,14 @@ void WaterScape::init(int argc, char** argv)
 
 void WaterScape::display()
 {
-/*	glClearColor(1.0f, 0.0f, 0.0f, 1.0f); // Clear the background of our window to red
-	glClear(GL_COLOR_BUFFER_BIT); //Clear the colour buffer (more buffers later on)
-	glLoadIdentity(); // Load the Identity Matrix to reset our drawing locations
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glTranslatef(0.0f, 0.0f, -5.0f); // Push eveything 5 units back into the scene, otherwise we won't see the primitive
-	*/
 	drawScape();
 
 	glFlush(); // Flush the OpenGL buffers to the window
 }
 void WaterScape::drawScape()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glColor3d(0.1, 0.25, 0.5);
 
 	glPushMatrix();
@@ -46,9 +41,11 @@ void WaterScape::drawScape()
 	glutSolidSphere(1, 50, 50);
 	glPopMatrix();
 
+	glColor3d(1.0, 1.0, 0.2);
+
 	glPushMatrix();
 	glTranslated(0.0, -1.2, -6);
-	glutWireSphere(1, 16, 16);
+	glutSolidSphere(1, 50, 50);
 	glPopMatrix();
 
 	glutSwapBuffers();
