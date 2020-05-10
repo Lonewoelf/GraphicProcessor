@@ -8,8 +8,9 @@ At the end the entire development process from start to finish will be described
 <h2> Table of Contents </h2>
 
 1. [OpenGL or OpenCL?](#GLCL)
-3. [Information on OpenGL ](#GL)
-4. [Goal](#Goal)
+2. [Information on OpenGL ](#GL)
+3. [Goal](#Goal)
+4. [Plan](#Plan)
 5. [Path to Goal ](#PtG)
 
 <a name="GLCL"></a>
@@ -46,11 +47,16 @@ Example terrain: <br>
    https://www.gamedev.net/reference/articles/article915.asp <br>
    Water generation seems to rely on Perlin Noise algorithm quite often.
 
-
 <a name="Goal"></a>
 ## Goal
 
 Maybe creating a water pool with some terrain around it? possibly with user interaction, maybe flying through the created terrain?
+
+<a name="Plan"></a>
+## Plan
+
+1. Following the swiftless OpenGL tutorial 1 - 24
+2. Following the swiftless terrain OpenGL tutorial
 
 <a name="PtG"></a>
 ## Path to Goal
@@ -76,3 +82,6 @@ Installed freeglut, glew and glfw.
 freeglut is the newer version of GLUT (1998), but isn't standard installed in VS19. <br>
 documentation for the installation was mostly deprecated. <br>
 Drew multiple 3D forms, in different color patterns, finished part 6 of https://www.swiftless.com/category/tutorials/opengl openGL tutorial
+
+[10-05-2020] <br>
+Continued with the swiftless tutorial
