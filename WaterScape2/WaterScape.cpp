@@ -16,7 +16,7 @@ WaterScape::~WaterScape()
 void WaterScape::init(int argc, char** argv)
 {
 	glutInit(&argc, argv); 
-	glutInitDisplayMode(GLUT_DOUBLE);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	glutInitWindowPosition(SCREEN_POS_X, SCREEN_POS_Y);
 	glutCreateWindow("WaterScape");
@@ -47,10 +47,12 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	keyOperations();
 
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f); 
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 
 	glClear(GL_COLOR_BUFFER_BIT); 
 	glLoadIdentity(); 
 
@@ -60,7 +62,8 @@ void WaterScape::display()
 
 	glRotatef(yRotationAngle, 0.0f, 1.0f, 0.0f);
 
-	glutWireCube(2.0f);
+	glColor4f(0.5f, 0.9f, 0.3f, 0.9f);
+	glutSolidCube(2.0f); 
 
 	glutSwapBuffers();
 
