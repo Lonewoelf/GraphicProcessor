@@ -6,6 +6,21 @@ float yLocation = 0.0f;
 float yRotationAngle = 0.8f;
 GLfloat angle = 0.0;
 
+GLfloat redDiffuseMaterial[] = { 1.0, 0.0, 0.0 };
+GLfloat whiteSpecularMaterial[] = { 1.0, 1.0, 1.0 };
+GLfloat greenEmissiveMaterial[] = { 0.0, 1.0, 0.0 };
+
+GLfloat whiteSpecularLight[] = { 1.0, 1.0, 1.0 };
+GLfloat blackAmbientLight[] = { 0.0, 0.0, 0.0 };
+GLfloat whiteDiffuseLight[] = { 1.0, 1.0, 1.0 };
+
+GLfloat blankMaterial[] = { 0.0, 0.0, 0.0 };
+GLfloat mShininess[] = { 10 }; 
+
+bool diffuse = false;
+bool emissive = false;
+bool specular = false;
+
 WaterScape::WaterScape()
 {
 }
@@ -56,6 +71,9 @@ void WaterScape::display()
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteSpecularLight);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, blackAmbientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteDiffuseLight);
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	glRotatef(angle, 1.0, 0.0, 0.0);
 	glRotatef(angle, 0.0, 1.0, 0.0);
@@ -78,8 +96,55 @@ void WaterScape::reshape(int width, int height) {
 
 void WaterScape::keyPressed(unsigned char key, int x, int y)
 {
-	keyStates[key] = true;
+	if (key == 's')
+	{
+		if (specular == false)
+		{
+			specular = true;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,
+				whiteSpecularMaterial);
+			glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mShininess);
+		}
+		else if (specular == true)
+		{
+			specular = false;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, blankMaterial);
+			glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS,
+				blankMaterial);
+		}
+	}
+
+	if (key == 'd')
+	{
+		if (diffuse == false)
+		{
+			diffuse = true;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,
+				redDiffuseMaterial);
+		}
+		else if (diffuse == true)
+		{
+			diffuse = false;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, blankMaterial);
+		}
+	}
+
+	if (key == 'e')
+	{
+		if (emissive == false)
+		{
+			emissive = true;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,
+				greenEmissiveMaterial);
+		}
+		else if (emissive == true)
+		{
+			emissive = false;
+			glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, blankMaterial);
+		}
+	}
 }
+
 
 void WaterScape::keyUp(unsigned char key, int x, int y)
 {
