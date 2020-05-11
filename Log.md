@@ -84,4 +84,8 @@ documentation for the installation was mostly deprecated. <br>
 Drew multiple 3D forms, in different color patterns, finished part 6 of https://www.swiftless.com/category/tutorials/opengl openGL tutorial
 
 [10-05-2020] <br>
-Continued with the swiftless tutorial
+Continued with the swiftless tutorial, finished part 7 (Rotation)<br>
+Tried to convert the project to C because a lot of the OpenGL functions can't be implemented within a class.<br>
+However, once the entire project was in C, it gave over 100 linking errors which I didn't understand, so I reverted the changes.
+
+[11-05-2020] <br>
