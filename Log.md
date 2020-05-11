@@ -89,3 +89,8 @@ Tried to convert the project to C because a lot of the OpenGL functions can't be
 However, once the entire project was in C, it gave over 100 linking errors which I didn't understand, so I reverted the changes.
 
 [11-05-2020] <br>
+Did part 8, learned about single / double / triple and quadro buffering, and applied double buffering to the project. <br>
+Completed part 9, learned about blending. <br>
+Completed part 10 (Scaling) <br>
+Finished part 11 (lightning) <br>
+Finished part 12 (Light on material (colors)) <br>
