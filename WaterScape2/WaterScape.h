@@ -15,10 +15,12 @@ public:
 	WaterScape();
 	~WaterScape();
 	void init(int argc, char** argv);
-	static void display();
-	static void drawScape();
-	static void reshape(int width, int height);
+	static void keyOperations();
 	static void keyPressed(unsigned char key, int x, int y);
 	static void keyUp(unsigned char key, int x, int y);
-};
+	static void display();
+	static void reshape(int width, int height);
 
+
+
+};

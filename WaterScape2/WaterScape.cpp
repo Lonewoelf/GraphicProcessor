@@ -1,5 +1,10 @@
 #include "WaterScape.h"
 
+bool* keyStates = new bool[256];
+bool movingUp = true;
+float yLocation = 0.0f;
+float yRotationAngle = 0.8f;
+
 WaterScape::WaterScape()
 {
 }
@@ -10,8 +15,8 @@ WaterScape::~WaterScape()
 
 void WaterScape::init(int argc, char** argv)
 {
-	glutInit(&argc, argv); // Initialize GLUT
-	glutInitDisplayMode(GLUT_SINGLE); // Set up a basic display buffer (only single buffered for now)
+	glutInit(&argc, argv); 
+	glutInitDisplayMode(GLUT_SINGLE);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	glutInitWindowPosition(SCREEN_POS_X, SCREEN_POS_Y);
 	glutCreateWindow("WaterScape");
@@ -24,68 +29,76 @@ void WaterScape::init(int argc, char** argv)
 	glutMainLoop();
 }
 
+void WaterScape::keyOperations()
+{
+	if (keyStates['w']) {
+
+	}
+	else if (keyStates['a']) {
+
+	}
+	else if (keyStates['s']) {
+
+	}
+	else if (keyStates['d']) {
+
+	}
+}
+
 void WaterScape::display()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	drawScape();
+	keyOperations();
 
-	glFlush(); // Flush the OpenGL buffers to the window
+	glClearColor(1.0f, 0.0f, 0.0f, 1.0f); 
+	glClear(GL_COLOR_BUFFER_BIT); 
+	glLoadIdentity(); 
+
+	glTranslatef(0.0f, 0.0f, -5.0f);
+
+	glTranslatef(0.0f, yLocation, 0.0f);
+
+	glRotatef(yRotationAngle, 0.0f, 1.0f, 0.0f);
+
+	glutWireCube(2.0f);
+
+	glFlush();
+
+	if (movingUp) {
+		yLocation -= 0.05f;
+	}
+	else {
+		yLocation += 0.05f;
+	}
+
+	if (yLocation < -3.0f) {
+		movingUp = false;
+	}
+	else if (yLocation > 3.0f) {
+		movingUp = true;
+		yRotationAngle += 0.05f;
+	}
+	if (yRotationAngle > 360.0f) {
+		yRotationAngle -= 360.0f;
+	}
+
 }
-void WaterScape::drawScape()
-{
-	glColor3d(0.1, 0.25, 0.5);
 
-	glPushMatrix();
-	glTranslated(0.0, 1.2, -6);
-	glutSolidSphere(1, 50, 50);
-	glPopMatrix();
-
-	glColor3d(1.0, 1.0, 0.2);
-
-	glPushMatrix();
-	glTranslated(0.0, -1.2, -6);
-	glutSolidSphere(1, 50, 50);
-	glPopMatrix();
-
-	glutSwapBuffers();
-}
 void WaterScape::reshape(int width, int height) {
-	glViewport(0, 0, (GLsizei)width, (GLsizei)height); // Set our viewport to the size of our window
-	glMatrixMode(GL_PROJECTION); // Switch to the projection matrix so that we can manipulate how our scene is viewed
-	glLoadIdentity(); // Reset the projection matrix to the identity matrix so that we don't get any artifacts (cleaning up)
-	gluPerspective(60, (GLfloat)width / (GLfloat)height, 1.0, 100.0); // Set the Field of view angle (in degrees), the aspect ratio of our window, and the new and far planes
-	glMatrixMode(GL_MODELVIEW); // Switch back to the model view matrix, so that we can start drawing shapes correctly
+	glViewport(0, 0, (GLsizei)width, (GLsizei)height); 
+	glMatrixMode(GL_PROJECTION); 
+	glLoadIdentity(); 
+	gluPerspective(60, (GLfloat)width / (GLfloat)height, 1.0, 100.0); 
+	glMatrixMode(GL_MODELVIEW); 
 }
+
 
 void WaterScape::keyPressed(unsigned char key, int x, int y)
 {
-	if (key == 'w') {
-
-	}
-	else if (key == 'a') {
-
-	}
-	else if (key == 's') {
-
-	}
-	else if (key == 'd') {
-
-	}
+	keyStates[key] = true;
 }
 
 void WaterScape::keyUp(unsigned char key, int x, int y)
 {
-	if (key == 'w') {
-
-	}
-	else if (key == 'a') {
-
-	}
-	else if (key == 's') {
-
-	}
-	else if (key == 'd') {
-
-	}
+	keyStates[key] = false;
 }
