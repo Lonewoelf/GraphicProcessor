@@ -16,7 +16,7 @@ WaterScape::~WaterScape()
 void WaterScape::init(int argc, char** argv)
 {
 	glutInit(&argc, argv); 
-	glutInitDisplayMode(GLUT_SINGLE);
+	glutInitDisplayMode(GLUT_DOUBLE);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	glutInitWindowPosition(SCREEN_POS_X, SCREEN_POS_Y);
 	glutCreateWindow("WaterScape");
@@ -62,7 +62,7 @@ void WaterScape::display()
 
 	glutWireCube(2.0f);
 
-	glFlush();
+	glutSwapBuffers();
 
 	if (movingUp) {
 		yLocation -= 0.05f;
