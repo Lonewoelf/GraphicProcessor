@@ -4,6 +4,7 @@ bool* keyStates = new bool[256];
 bool movingUp = true;
 float yLocation = 0.0f;
 float yRotationAngle = 0.8f;
+GLfloat angle = 0.0;
 
 WaterScape::WaterScape()
 {
@@ -16,7 +17,7 @@ WaterScape::~WaterScape()
 void WaterScape::init(int argc, char** argv)
 {
 	glutInit(&argc, argv); 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	glutInitWindowPosition(SCREEN_POS_X, SCREEN_POS_Y);
 	glutCreateWindow("WaterScape");
@@ -25,6 +26,11 @@ void WaterScape::init(int argc, char** argv)
 	glutReshapeFunc(reshape);
 	glutKeyboardFunc(keyPressed);
 	glutKeyboardUpFunc(keyUp);
+
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 
 	glutMainLoop();
 }
@@ -47,43 +53,17 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	keyOperations();
-
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 
-	glClear(GL_COLOR_BUFFER_BIT); 
-	glLoadIdentity(); 
-
-	glTranslatef(0.0f, 0.0f, -5.0f);
-
-	glTranslatef(0.0f, yLocation, 0.0f);
-
-	glRotatef(yRotationAngle, 0.0f, 1.0f, 0.0f);
-
-	glColor4f(0.5f, 0.9f, 0.3f, 0.9f);
-	glutSolidCube(2.0f); 
-
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	glRotatef(angle, 1.0, 0.0, 0.0);
+	glRotatef(angle, 0.0, 1.0, 0.0);
+	glRotatef(angle, 0.0, 0.0, 1.0);
+	glColor3f(1.0, 1.0, 0.0);
+	glutSolidCube(2);
 	glutSwapBuffers();
-
-	if (movingUp) {
-		yLocation -= 0.05f;
-	}
-	else {
-		yLocation += 0.05f;
-	}
-
-	if (yLocation < -3.0f) {
-		movingUp = false;
-	}
-	else if (yLocation > 3.0f) {
-		movingUp = true;
-		yRotationAngle += 0.05f;
-	}
-	if (yRotationAngle > 360.0f) {
-		yRotationAngle -= 360.0f;
-	}
+	angle++;
 
 }
 
