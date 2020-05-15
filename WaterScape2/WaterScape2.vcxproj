@@ -104,7 +104,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\OpenGL\freeglut-MSVC-3.0.0-2.mp\freeglut\lib\x64;C:\OpenGL\glfw-3.3.2\lib-vc2019;C:\OpenGL\glew-2.1.0\lib\Release\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -140,7 +140,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\OpenGL\freeglut-MSVC-3.0.0-2.mp\freeglut\lib\x64;C:\OpenGL\glfw-3.3.2\lib-vc2019;C:\OpenGL\glew-2.1.0\lib\Release\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -158,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WaterScape.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="texture.raw" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
