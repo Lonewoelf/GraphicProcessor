@@ -1,25 +1,21 @@
 #include "WaterScape.h"
 
-bool* keyStates = new bool[256];
-bool movingUp = true;
-float yLocation = 0.0f;
-float yRotationAngle = 0.8f;
 GLfloat angle = 0.0;
 
-GLfloat redDiffuseMaterial[] = { 1.0, 0.0, 0.0 };
-GLfloat whiteSpecularMaterial[] = { 1.0, 1.0, 1.0 };
-GLfloat greenEmissiveMaterial[] = { 0.0, 1.0, 0.0 };
+GLfloat dlr = 1.0;
+GLfloat dlg = 1.0;
+GLfloat dlb = 1.0;
 
-GLfloat whiteSpecularLight[] = { 1.0, 1.0, 1.0 };
-GLfloat blackAmbientLight[] = { 0.0, 0.0, 0.0 };
-GLfloat whiteDiffuseLight[] = { 1.0, 1.0, 1.0 };
+GLfloat alr = 1.0;
+GLfloat alg = 1.0;
+GLfloat alb = 1.0;
 
-GLfloat blankMaterial[] = { 0.0, 0.0, 0.0 };
-GLfloat mShininess[] = { 10 }; 
+GLfloat lx = 0.0;
+GLfloat ly = 0.0;
+GLfloat lz = 1.0;
+GLfloat lw = 0.0;
 
-bool diffuse = false;
-bool emissive = false;
-bool specular = false;
+char keyStates[256];
 
 WaterScape::WaterScape()
 {
@@ -42,10 +38,11 @@ void WaterScape::init(int argc, char** argv)
 	glutKeyboardFunc(keyPressed);
 	glutKeyboardUpFunc(keyUp);
 
-
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST); 
+	glEnable(GL_LIGHTING); 
 	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1); 
+	glShadeModel(GL_SMOOTH);
 
 	glutMainLoop();
 }
@@ -68,12 +65,15 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteSpecularLight);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, blackAmbientLight);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteDiffuseLight);
+	GLfloat DiffuseLight[] = { dlr, dlg, dlb };
+	GLfloat AmbientLight[] = { alr, alg, alb };
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, DiffuseLight);
+	glLightfv(GL_LIGHT1, GL_AMBIENT, AmbientLight);
+	GLfloat LightPosition[] = { lx, ly, lz, lw };
+	glLightfv(GL_LIGHT0, GL_POSITION, LightPosition);
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	glRotatef(angle, 1.0, 0.0, 0.0);
 	glRotatef(angle, 0.0, 1.0, 0.0);
@@ -96,52 +96,32 @@ void WaterScape::reshape(int width, int height) {
 
 void WaterScape::keyPressed(unsigned char key, int x, int y)
 {
-	if (key == 's')
-	{
-		if (specular == false)
-		{
-			specular = true;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR,
-				whiteSpecularMaterial);
-			glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, mShininess);
-		}
-		else if (specular == true)
-		{
-			specular = false;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, blankMaterial);
-			glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS,
-				blankMaterial);
-		}
+	if (key == 'r') {
+		dlr = 1.0; //change light to red
+		dlg = 0.0;
+		dlb = 0.0;
 	}
-
-	if (key == 'd')
-	{
-		if (diffuse == false)
-		{
-			diffuse = true;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE,
-				redDiffuseMaterial);
-		}
-		else if (diffuse == true)
-		{
-			diffuse = false;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, blankMaterial);
-		}
+	if (key == 'g') {
+		dlr = 0.0; //change light to green
+		dlg = 1.0;
+		dlb = 0.0;
 	}
-
-	if (key == 'e')
-	{
-		if (emissive == false)
-		{
-			emissive = true;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION,
-				greenEmissiveMaterial);
-		}
-		else if (emissive == true)
-		{
-			emissive = false;
-			glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, blankMaterial);
-		}
+	if (key == 'b') {
+		dlr = 0.0; //change light to blue
+		dlg = 0.0;
+		dlb = 1.0;
+	}
+	if (key == 'w') {
+		ly += 10.0; //move the light up
+	}
+	if (key == 's') {
+		ly -= 10.0; //move the light down
+	}
+	if (key == 'a') {
+		lx -= 10.0; //move the light left
+	}
+	if (key == 'd') {
+		lx += 10.0; //move the light right
 	}
 }
 
