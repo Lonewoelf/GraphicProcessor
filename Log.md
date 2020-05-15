@@ -94,3 +94,10 @@ Completed part 9, learned about blending. <br>
 Completed part 10 (Scaling) <br>
 Finished part 11 (lightning) <br>
 Finished part 12 (Light on material (colors)) <br>
+
+[15-05-2020] <br>
+
+<img src="/Images/BueShadyCube.png" width="200"> <br>
+
+Finished part 13 - 15
+Part 16 started but not finished, the texture won't load for some reason.
