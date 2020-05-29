@@ -31,5 +31,6 @@
     <None Include="texture.raw">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

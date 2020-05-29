@@ -1,6 +1,9 @@
 #include "WaterScape.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include <windows.h>
 
 GLfloat angle = 0.0;
 
@@ -21,7 +24,7 @@ GLfloat density = 0.3f;
 
 GLfloat fogColor[4] = { 1.0, 1.0, 1.0, 1.0 };
 
-GLuint texturegl;
+GLuint texture;
 
 char keyStates[256];
 
@@ -34,37 +37,22 @@ WaterScape::WaterScape()
 
 WaterScape::~WaterScape()
 {
-	glDeleteTextures(1, &texturegl);
+	glDeleteTextures(1, &texture);
 }
 
 void WaterScape::init(int argc, char** argv)
 {
-	glutInit(&argc, argv); 
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-	glutInitWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	glutInitWindowPosition(SCREEN_POS_X, SCREEN_POS_Y);
-	glutCreateWindow("WaterScape");
+	glutInit (&argc, argv);
+    glutInitDisplayMode (GLUT_DOUBLE);
+    glutInitWindowSize (SCREEN_WIDTH, SCREEN_HEIGHT);
+    glutInitWindowPosition (SCREEN_POS_X, SCREEN_POS_Y);
+    glutCreateWindow ("WaterScape 2");
+    glutDisplayFunc (display);
+    glutIdleFunc (display);
+    glutReshapeFunc (reshape);
+    texture = LoadTexture( "texture.raw", 256, 256 );
+    glutMainLoop ();
 
-	glutDisplayFunc(display); 
-	glutReshapeFunc(reshape);
-	glutKeyboardFunc(keyPressed);
-	glutKeyboardUpFunc(keyUp);
-
-	glEnable(GL_DEPTH_TEST); 
-	glEnable(GL_LIGHTING); 
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHT1); 
-	glShadeModel(GL_SMOOTH); 
-	glEnable(GL_FOG);
-
-	glFogi(GL_FOG_MODE, GL_EXP2);
-	glFogfv(GL_FOG_COLOR, fogColor);
-	glFogf(GL_FOG_DENSITY, density);
-	glHint(GL_FOG_HINT, GL_DONT_CARE);
-
-	texturegl = LoadTexture("texture.raw", 256, 256);
-
-	glutMainLoop();
 }
 
 void WaterScape::keyOperations()
@@ -106,7 +94,7 @@ void WaterScape::reshape(int width, int height) {
 
 void WaterScape::keyPressed(unsigned char key, int x, int y)
 {
-	if (key == 'r') {
+/*	if (key == 'r') {
 		dlr = 1.0; //change light to red
 		dlg = 0.0;
 		dlb = 0.0;
@@ -132,7 +120,7 @@ void WaterScape::keyPressed(unsigned char key, int x, int y)
 	}
 	if (key == 'd') {
 		lx += 10.0; //move the light right
-	}
+	}*/
 }
 
 void WaterScape::keyUp(unsigned char key, int x, int y)
@@ -145,30 +133,20 @@ GLuint WaterScape::LoadTexture(const char* filename, int width, int height)
 	GLuint texture;
 	unsigned char* data;
 	FILE* file;
-
-	int size = width * height * 3;
-
-	//The following code will read in our RAW file
-	file = fopen(filename, "r");
-	if (file == NULL) {
-		return 0; \
-	}
-
-	std::cout << "Inside RAW" << std::endl;
-	data = (unsigned char*)malloc(size);
-	fread(data, size, 1, file);
-	std::cout << data;
+	file = fopen(filename, "rb");
+	if (file == NULL) return 0;
+	data = (unsigned char*)malloc(width * height * 3);
+	fread(data, width * height * 3, 1, file);
 	fclose(file);
-
 	glGenTextures(1, &texture);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 	free(data);
-
 	return texture;
 }
 
@@ -183,12 +161,12 @@ void cube() {
 }
 
 void square() {
-		glBindTexture(GL_TEXTURE_2D, texturegl);
-		glRotatef(angle, 1.0f, 1.0f, 1.0f);
-		glBegin(GL_QUADS);
-		glTexCoord2d(0.0, 0.0); glVertex2d(-1.0, -1.0);
-		glTexCoord2d(1.0, 0.0); glVertex2d(+1.0, -1.0);
-		glTexCoord2d(1.0, 1.0); glVertex2d(+1.0, +1.0);
-		glTexCoord2d(0.0, 1.0); glVertex2d(-1.0, +1.0);
-		glEnd();
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glRotatef(angle, 1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glTexCoord2d(0.0, 0.0); glVertex2d(-1.0, -1.0);
+	glTexCoord2d(1.0, 0.0); glVertex2d(+1.0, -1.0);
+	glTexCoord2d(1.0, 1.0); glVertex2d(+1.0, +1.0);
+	glTexCoord2d(0.0, 1.0); glVertex2d(-1.0, +1.0);
+	glEnd();
 }
