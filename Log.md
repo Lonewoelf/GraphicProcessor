@@ -103,12 +103,19 @@ Finished part 13 - 15
 Part 16 started but not finished, the texture won't load for some reason.
 
 [20-05-2020] <br>
-Note to future self, don't update the IDE youre using in the middle of project development! <br>
+Note to future self, don't update the IDE you're using in the middle of project development! <br>
 The VS project broke today, even though the paths and libraries were still there. <br>
-StackOverflow, came with the following solution: <br>
+StackOverflow, came up with the following solution: <br>
 
-`Tools>NuGet Package Manager>Package Manager Console` <br>
+`Tools > NuGet Package Manager > Package Manager Console` <br>
 `Install-Package nupengl.core` <br>
 
-Started wondering if this would have been the easiest way to install OpenGL on VS in the first place.
+Started wondering if this would have been the easiest way to install OpenGL on VS in the first place. <br>
+
+[29-05-2020] <br>
+<img src="/Images/GrassSquare.png" width="200"> <br>
+
+Fixed the fact that the texture won't appear on the square, the reason for it not showing up was a corrupt texture file. <br>
+Finished part 16 <br>
+Started part 17
 
