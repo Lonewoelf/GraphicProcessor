@@ -117,5 +117,6 @@ Started wondering if this would have been the easiest way to install OpenGL on V
 
 Fixed the fact that the texture won't appear on the square, the reason for it not showing up was a corrupt texture file. <br>
 Finished part 16 <br>
-Started part 17
+Started part 17, GPU usage goes to 100% in taskmanager, but the screen stays blank. <br>
+I do not yet know, how to solve this problem.
 
