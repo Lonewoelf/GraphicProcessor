@@ -81,7 +81,7 @@ Started WaterScape2 following: https://www.swiftless.com/terraintuts.html
 Installed freeglut, glew and glfw.
 freeglut is the newer version of GLUT (1998), but isn't standard installed in VS19. <br>
 documentation for the installation was mostly deprecated. <br>
-Drew multiple 3D forms, in different color patterns, finished part 6 of https://www.swiftless.com/category/tutorials/opengl openGL tutorial
+Drew multiple 3D forms, in different color patterns, finished part 6 of https://www.swiftless.com/opengltuts.html openGL tutorial
 
 [10-05-2020] <br>
 Continued with the swiftless tutorial, finished part 7 (Rotation)<br>
