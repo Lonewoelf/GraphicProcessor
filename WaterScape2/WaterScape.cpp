@@ -14,6 +14,7 @@ char keyStates[256];
 void cube();
 void square();
 
+
 WaterScape::WaterScape()
 {
 }
@@ -65,7 +66,8 @@ void WaterScape::display()
 	cube();
 	glDeleteTextures(1, &texture);
 	glutSwapBuffers();
-	angle += 0.05;
+	updateFps();
+	angle += 1;
 }
 
 void WaterScape::reshape(int width, int height) {
@@ -138,6 +140,20 @@ GLuint WaterScape::LoadTexture(const char* filename, int width, int height)
 	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
 	free(data);
 	return texture;
+}
+
+void WaterScape::updateFps()
+{
+	static float framesPerSecond = 0.0f;
+	static float lastTime = 0.0f;  
+	float currentTime = GetTickCount() * 0.001f;
+	++framesPerSecond;
+	if (currentTime - lastTime > 1.0f)
+	{
+		lastTime = currentTime;
+		fprintf(stderr, "\nFPS: %d\n\n", (int)framesPerSecond);
+		framesPerSecond = 0;
+	}
 }
 
 void cube() {

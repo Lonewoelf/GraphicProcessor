@@ -23,5 +23,5 @@ public:
 
 
 	static GLuint LoadTexture(const char* filename, int width, int height);
-	
+	static void updateFps();
 };
