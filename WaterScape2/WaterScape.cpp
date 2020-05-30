@@ -67,7 +67,7 @@ void WaterScape::display()
 	glDeleteTextures(1, &texture);
 	glutSwapBuffers();
 	updateFps();
-	angle += 1;
+	angle += 0.05;
 }
 
 void WaterScape::reshape(int width, int height) {
@@ -159,7 +159,8 @@ void WaterScape::updateFps()
 void cube() {
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glRotatef(angle, 1.0f, 1.0f, 1.0f);
-	glutSolidCube(2);
+	glutSolidTeapot(2);
+	//glutSolidCube(2);
 }
 
 void square() {
