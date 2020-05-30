@@ -120,3 +120,10 @@ Finished part 16 <br>
 Started part 17, GPU usage goes to 100% in taskmanager, but the screen stays blank. <br>
 I do not yet know, how to solve this problem.
 
+[30-05-2020] <br>
+<img src="/Images/RotatingGrassCube.png" width="200"> <br>
+
+Solved yesterdays problem, turned out the old texture buffer needed to be deleted in order for the cube to render. <br>
+Finished part 17 <br>
+Implemented an FPS counter after noticing that the cube would sometimes seem to suddenly move faster or slower. <br>
+The FPS counter confirmed this, I will do some research on FPS capping later on in development, since it isn't a priority right now. <br>
