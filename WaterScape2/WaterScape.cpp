@@ -12,7 +12,7 @@ GLuint texture;
 char keyStates[256];
 
 void cube();
-void square();
+void cub2();
 
 
 WaterScape::WaterScape()
@@ -55,7 +55,7 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -64,6 +64,7 @@ void WaterScape::display()
 	glEnable(GL_TEXTURE_GEN_S);
 	glEnable(GL_TEXTURE_GEN_T);
 	cube();
+	cub2();
 	glDeleteTextures(1, &texture);
 	glutSwapBuffers();
 	updateFps();
@@ -157,19 +158,23 @@ void WaterScape::updateFps()
 }
 
 void cube() {
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glRotatef(angle, 1.0f, 1.0f, 1.0f);
-	glutSolidTeapot(2);
-	//glutSolidCube(2);
+	glPushMatrix(); //set where to start the current object transformations
+	glTranslatef(1, 0, 0); //move cube1 to the right
+	glRotatef(angle, 1.0, 0.0, 0.0);
+	glRotatef(angle, 0.0, 1.0, 0.0);
+	glRotatef(angle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 0.0, 1.0); //change cube1 to red
+	glutSolidCube(1);
+	glPopMatrix(); //end the current object transformations
 }
 
-void square() {
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glRotatef(angle, 1.0f, 1.0f, 1.0f);
-	glBegin(GL_QUADS);
-	glTexCoord2d(0.0, 0.0); glVertex2d(-1.0, -1.0);
-	glTexCoord2d(1.0, 0.0); glVertex2d(+1.0, -1.0);
-	glTexCoord2d(1.0, 1.0); glVertex2d(+1.0, +1.0);
-	glTexCoord2d(0.0, 1.0); glVertex2d(-1.0, +1.0);
-	glEnd();
+void cub2() {
+	glPushMatrix(); //set where to start the current object transformations
+	glTranslatef(0, 1, 0); //move cube1 to the right
+	glRotatef(angle, 1.0, 0.0, 0.0);
+	glRotatef(angle, 0.0, 1.0, 0.0);
+	glRotatef(angle, 0.0, 0.0, 1.0);
+	glColor3f(1.0, 0.0, 0.0); //change cube1 to red
+	glutSolidCube(1);
+	glPopMatrix(); //end the current object transformations
 }
