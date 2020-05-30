@@ -22,6 +22,6 @@ public:
 	static void reshape(int width, int height);
 
 
-	GLuint LoadTexture(const char* filename, int width, int height);
+	static GLuint LoadTexture(const char* filename, int width, int height);
 	
 };

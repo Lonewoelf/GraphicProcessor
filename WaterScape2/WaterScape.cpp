@@ -7,29 +7,12 @@
 
 GLfloat angle = 0.0;
 
-GLfloat dlr = 1.0;
-GLfloat dlg = 1.0;
-GLfloat dlb = 1.0;
-
-GLfloat alr = 1.0;
-GLfloat alg = 1.0;
-GLfloat alb = 1.0;
-
-GLfloat lx = 0.0;
-GLfloat ly = 0.0;
-GLfloat lz = 1.0;
-GLfloat lw = 0.0;
-
-GLfloat density = 0.3f;
-
-GLfloat fogColor[4] = { 1.0, 1.0, 1.0, 1.0 };
-
 GLuint texture;
 
 char keyStates[256];
 
-void square();
 void cube();
+void square();
 
 WaterScape::WaterScape()
 {
@@ -37,7 +20,7 @@ WaterScape::WaterScape()
 
 WaterScape::~WaterScape()
 {
-	glDeleteTextures(1, &texture);
+	
 }
 
 void WaterScape::init(int argc, char** argv)
@@ -50,9 +33,7 @@ void WaterScape::init(int argc, char** argv)
     glutDisplayFunc (display);
     glutIdleFunc (display);
     glutReshapeFunc (reshape);
-    texture = LoadTexture( "texture.raw", 256, 256 );
     glutMainLoop ();
-
 }
 
 void WaterScape::keyOperations()
@@ -76,12 +57,15 @@ void WaterScape::display()
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	glEnable(GL_TEXTURE_2D);
 	gluLookAt(0.0, 0.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-	square();
+	texture = LoadTexture("texture.raw", 256, 256);
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_GEN_S);
+	glEnable(GL_TEXTURE_GEN_T);
+	cube();
+	glDeleteTextures(1, &texture);
 	glutSwapBuffers();
-	angle++;
-
+	angle += 0.05;
 }
 
 void WaterScape::reshape(int width, int height) {
@@ -133,31 +117,33 @@ GLuint WaterScape::LoadTexture(const char* filename, int width, int height)
 	GLuint texture;
 	unsigned char* data;
 	FILE* file;
+
 	file = fopen(filename, "rb");
-	if (file == NULL) return 0;
+	if (file == NULL) {
+		return 0;
+	}
+
 	data = (unsigned char*)malloc(width * height * 3);
 	fread(data, width * height * 3, 1, file);
 	fclose(file);
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
+
+	glGenTextures(1, &texture); 
+	glBindTexture(GL_TEXTURE_2D, texture); 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+	gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
 	free(data);
 	return texture;
 }
 
 void cube() {
-	glFogf(GL_FOG_START, 1);
-	glRotatef(angle, 1.0, 0.0, 0.0);
-	glRotatef(angle, 0.0, 1.0, 0.0);
-	glRotatef(angle, 0.0, 0.0, 1.0);
-	glColor3f(1.0, 1.0, 0.0);
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glRotatef(angle, 1.0f, 1.0f, 1.0f);
 	glutSolidCube(2);
-	glFogf(GL_FOG_END, 10);
 }
 
 void square() {
