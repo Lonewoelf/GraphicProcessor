@@ -27,13 +27,17 @@ WaterScape::~WaterScape()
 void WaterScape::init(int argc, char** argv)
 {
 	glutInit (&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
+	glutGameModeString("1920×1080:32@75");
+	glutEnterGameMode();
     glutInitDisplayMode (GLUT_DOUBLE);
-    glutInitWindowSize (SCREEN_WIDTH, SCREEN_HEIGHT);
-    glutInitWindowPosition (SCREEN_POS_X, SCREEN_POS_Y);
-    glutCreateWindow ("WaterScape 2");
+    //glutInitWindowSize (SCREEN_WIDTH, SCREEN_HEIGHT);
+    //glutInitWindowPosition (SCREEN_POS_X, SCREEN_POS_Y);
+    //glutCreateWindow ("WaterScape 2");
     glutDisplayFunc (display);
     glutIdleFunc (display);
     glutReshapeFunc (reshape);
+	glutKeyboardFunc(keyPressed);
     glutMainLoop ();
 }
 
@@ -108,6 +112,12 @@ void WaterScape::keyPressed(unsigned char key, int x, int y)
 	if (key == 'd') {
 		lx += 10.0; //move the light right
 	}*/
+
+	if (key == 'q')
+	{
+		glutLeaveGameMode();
+		exit(0);
+	}
 }
 
 void WaterScape::keyUp(unsigned char key, int x, int y)
