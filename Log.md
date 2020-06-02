@@ -131,3 +131,11 @@ Finished part 17 <br>
 Implemented an FPS counter after noticing that the cube would sometimes seem to suddenly move faster or slower. <br>
 The FPS counter confirmed this, I will do some research on FPS capping later on in development, since it isn't a priority right now. <br>
 Completed part 18, resulting in two turning grass textured cubes. <br>
+
+[02-06-2020] <br>
+<img src="/Images/cubeLandScape.png" width="700"> <br>
+Part 19 completed, fullscreen mode added. <br>
+Part 20 (MipMap generation) was already implemented, but they explained it better in this part, so it was an interesting short read. <br>
+Part 21 completed, used display lists to contain multiple cubes withing one object. <br>
+Part 22 completed, first part of the tutorial about cameras, end result moving through a small cube filled landscape  <br> 
+(shown in the screenshot above) <br>
