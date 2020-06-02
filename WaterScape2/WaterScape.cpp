@@ -11,8 +11,9 @@ GLuint texture;
 
 char keyStates[256];
 
-void cube();
 void cub2();
+
+GLuint cubelist;
 
 
 WaterScape::WaterScape()
@@ -22,6 +23,30 @@ WaterScape::WaterScape()
 WaterScape::~WaterScape()
 {
 	
+}
+
+void cube() {
+	cubelist = glGenLists(1);
+	glNewList(cubelist, GL_COMPILE);
+	glPushMatrix();
+	glTranslatef(1, 0, 0);
+	glRotatef(angle, 1.0, 0.0, 0.0);
+	glRotatef(angle, 0.0, 1.0, 0.0);
+	glRotatef(angle, 0.0, 0.0, 1.0);
+	glColor3f(0.0, 1.0, 0.0);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	//glPushMatrix();
+	//glTranslatef(0, 1, 0);
+	//glRotatef(angle, 1.0, 0.0, 0.0);
+	//glRotatef(angle, 0.0, 1.0, 0.0);
+	//glRotatef(angle, 0.0, 0.0, 1.0);
+	//glColor3f(0.0, 1.0, 0.0);
+	//glutSolidCube(1);
+	//glPopMatrix();
+
+	glEndList();
 }
 
 void WaterScape::init(int argc, char** argv)
@@ -38,6 +63,9 @@ void WaterScape::init(int argc, char** argv)
     glutIdleFunc (display);
     glutReshapeFunc (reshape);
 	glutKeyboardFunc(keyPressed);
+
+	cube();
+
     glutMainLoop ();
 }
 
@@ -59,6 +87,7 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
+
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
@@ -67,9 +96,8 @@ void WaterScape::display()
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_TEXTURE_GEN_S);
 	glEnable(GL_TEXTURE_GEN_T);
-	cube();
-	cub2();
 	glDeleteTextures(1, &texture);
+	glCallList(cubelist);
 	glutSwapBuffers();
 	updateFps();
 	angle += 0.05;
@@ -167,24 +195,15 @@ void WaterScape::updateFps()
 	}
 }
 
-void cube() {
-	glPushMatrix(); //set where to start the current object transformations
-	glTranslatef(1, 0, 0); //move cube1 to the right
-	glRotatef(angle, 1.0, 0.0, 0.0);
-	glRotatef(angle, 0.0, 1.0, 0.0);
-	glRotatef(angle, 0.0, 0.0, 1.0);
-	glColor3f(0.0, 0.0, 1.0); //change cube1 to red
-	glutSolidCube(1);
-	glPopMatrix(); //end the current object transformations
-}
+
 
 void cub2() {
-	glPushMatrix(); //set where to start the current object transformations
-	glTranslatef(0, 1, 0); //move cube1 to the right
+	glPushMatrix(); 
+	glTranslatef(0, 1, 0); 
 	glRotatef(angle, 1.0, 0.0, 0.0);
 	glRotatef(angle, 0.0, 1.0, 0.0);
 	glRotatef(angle, 0.0, 0.0, 1.0);
-	glColor3f(1.0, 0.0, 0.0); //change cube1 to red
+	glColor3f(0.0, 1.0, 0.0); 
 	glutSolidCube(1);
-	glPopMatrix(); //end the current object transformations
+	glPopMatrix();
 }
