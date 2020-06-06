@@ -139,3 +139,6 @@ Part 20 (MipMap generation) was already implemented, but they explained it bette
 Part 21 completed, used display lists to contain multiple cubes withing one object. <br>
 Part 22 completed, first part of the tutorial about cameras, end result moving through a small cube filled landscape  <br> 
 (shown in the screenshot above) <br>
+
+[06-06-2020] <br>
+Part 23 completed, resulting in an acceptable mouse movement in de cube environment. <br>
