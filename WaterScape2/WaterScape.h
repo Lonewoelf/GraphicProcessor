@@ -17,6 +17,7 @@ public:
 	void init(int argc, char** argv);
 	static void keyOperations();
 	static void keyPressed(unsigned char key, int x, int y);
+	static void mouseMovement(int x, int y);
 	static void keyUp(unsigned char key, int x, int y);
 	static void display();
 	static void reshape(int width, int height);

@@ -5,6 +5,9 @@
 #include <GL/glut.h>
 #include <windows.h>
 #include <math.h>
+#include <corecrt_math_defines.h>
+
+#define MOUSE_SENSIVITY 10
 
 float xpos = 0, ypos = 0, zpos = 0, xrot = 0, yrot = 0, angle = 0.0;
 
@@ -12,13 +15,12 @@ GLuint texture;
 
 char keyStates[256];
 
-void cub2();
-
 GLuint cubelist;
 
 float positionz[10];
 float positionx[10];
 
+float lastx = 0, lasty = 0;
 
 WaterScape::WaterScape()
 {
@@ -42,16 +44,16 @@ void cube() {
 	cubelist = glGenLists(1);
 	glNewList(cubelist, GL_COMPILE);
 
-	for (int i = 0; i < 10; i++){
+	for (int i = 0; i < 9; i++){
 		glPushMatrix();
-		glTranslated(-positionx[i + 1] * 10, 0, -positionz[i + 1] * 10); 
+		glTranslated(-positionx[i + 1] * 9, 0, -positionz[i + 1] * 9); 
 		glRotatef(angle, 1.0, 0.0, 0.0);
 		glRotatef(angle, 0.0, 1.0, 0.0);
 		glRotatef(angle, 0.0, 0.0, 1.0);
 		glPushMatrix();
 
 		glColor3f(0.0, 1.0, 0.0);
-		glutSolidCube(1);
+		glutSolidCube(2);
 		glPopMatrix();
 	}
 	glEndList();
@@ -77,6 +79,7 @@ void WaterScape::init(int argc, char** argv)
     glutDisplayFunc (display);
     glutIdleFunc (display);
     glutReshapeFunc (reshape);
+	glutPassiveMotionFunc(mouseMovement);
 	glutKeyboardFunc(keyPressed);
 	cube();
     glutMainLoop ();
@@ -100,7 +103,6 @@ void WaterScape::keyOperations()
 
 void WaterScape::display()
 {
-
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
@@ -143,8 +145,8 @@ void WaterScape::keyPressed(unsigned char key, int x, int y)
     if (key=='w')
     {
     float xrotrad, yrotrad;
-    yrotrad = (yrot / 180 * 3.141592654f);
-    xrotrad = (xrot / 180 * 3.141592654f);
+    yrotrad = (yrot / 180 * M_PI);
+    xrotrad = (xrot / 180 * M_PI);
     xpos += float(sin(yrotrad)) ;
     zpos -= float(cos(yrotrad)) ;
     ypos -= float(sin(xrotrad)) ;
@@ -153,8 +155,8 @@ void WaterScape::keyPressed(unsigned char key, int x, int y)
     if (key=='s')
     {
     float xrotrad, yrotrad;
-    yrotrad = (yrot / 180 * 3.141592654f);
-    xrotrad = (xrot / 180 * 3.141592654f);
+    yrotrad = (yrot / 180 * M_PI);
+    xrotrad = (xrot / 180 * M_PI);
     xpos -= float(sin(yrotrad));
     zpos += float(cos(yrotrad)) ;
     ypos += float(sin(xrotrad));
@@ -162,14 +164,18 @@ void WaterScape::keyPressed(unsigned char key, int x, int y)
 
     if (key=='d')
     {
-    yrot += 1;
-    if (yrot >360) yrot -= 360;
+		float yrotrad;
+		yrotrad = (yrot / 180 * 3.141592654f);
+		xpos += float(cos(yrotrad)) * 0.2;
+		zpos += float(sin(yrotrad)) * 0.2;
     }
 
     if (key=='a')
     {
-    yrot -= 1;
-    if (yrot < -360)yrot += 360;
+		float yrotrad;
+		yrotrad = (yrot / 180 * 3.141592654f);
+		xpos -= float(cos(yrotrad)) * 0.2;
+		zpos -= float(sin(yrotrad)) * 0.2;
     }
 
 	if (key == 'q')
@@ -222,20 +228,17 @@ void WaterScape::updateFps()
 	if (currentTime - lastTime > 1.0f)
 	{
 		lastTime = currentTime;
-		fprintf(stderr, "\nFPS: %d\n\n", (int)framesPerSecond);
+		system("CLS");
+		std::cout << " FPS: " << (int)framesPerSecond << std::endl;
 		framesPerSecond = 0;
 	}
 }
 
-
-
-void cub2() {
-	glPushMatrix(); 
-	glTranslatef(0, 1, 0); 
-	glRotatef(angle, 1.0, 0.0, 0.0);
-	glRotatef(angle, 0.0, 1.0, 0.0);
-	glRotatef(angle, 0.0, 0.0, 1.0);
-	glColor3f(0.0, 1.0, 0.0); 
-	glutSolidCube(1);
-	glPopMatrix();
+void WaterScape::mouseMovement(int x, int y) {
+	int diffx = x-lastx;
+	int diffy = y-lasty;
+	lastx = x;
+	lasty = y; 
+	xrot += ((float)diffy / MOUSE_SENSIVITY);
+	yrot += ((float)diffx / MOUSE_SENSIVITY);
 }
