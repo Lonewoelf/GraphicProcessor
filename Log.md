@@ -142,3 +142,8 @@ Part 22 completed, first part of the tutorial about cameras, end result moving t
 
 [06-06-2020] <br>
 Part 23 completed, resulting in an acceptable mouse movement in de cube environment. <br>
+Used: <br>
+`extern "C" {
+	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+    }` <br>
+To make the application run on Nvidea graphics instead of the intergrated graphics card. <br>
