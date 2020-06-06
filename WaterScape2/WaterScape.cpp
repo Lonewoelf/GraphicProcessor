@@ -31,6 +31,10 @@ WaterScape::~WaterScape()
 	
 }
 
+extern "C" {  //Tell Windows to use the nvidea graphics card instead of the integrated graphics card
+	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+}
+
 void cubePositions(void) { //set the positions of the cubes
 
 	for (int i = 0; i < 10; i++)
@@ -44,7 +48,7 @@ void cube() {
 	cubelist = glGenLists(1);
 	glNewList(cubelist, GL_COMPILE);
 
-	for (int i = 0; i < 9; i++){
+	for (int i = 0; i < 100; i++){
 		glPushMatrix();
 		glTranslated(-positionx[i + 1] * 9, 0, -positionz[i + 1] * 9); 
 		glRotatef(angle, 1.0, 0.0, 0.0);
@@ -53,7 +57,7 @@ void cube() {
 		glPushMatrix();
 
 		glColor3f(0.0, 1.0, 0.0);
-		glutSolidCube(2);
+		glutSolidTeapot(2);
 		glPopMatrix();
 	}
 	glEndList();
