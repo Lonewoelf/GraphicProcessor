@@ -160,6 +160,7 @@
     <ClInclude Include="WaterScape.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Debug\heightField.raw" />
     <None Include="packages.config" />
     <None Include="texture.raw" />
   </ItemGroup>
