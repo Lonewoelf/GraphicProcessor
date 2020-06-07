@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HeightField.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WaterScape.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HeightField.h" />
     <ClInclude Include="WaterScape.h" />
   </ItemGroup>
   <ItemGroup>
