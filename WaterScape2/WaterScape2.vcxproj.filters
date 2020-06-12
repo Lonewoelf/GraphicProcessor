@@ -42,4 +42,9 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="ori.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

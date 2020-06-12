@@ -76,7 +76,7 @@ void display(void) {
 
 void Init(void) {
 	glEnable(GL_DEPTH_TEST);
-
+	glDepthFunc(GL_LEQUAL);
 	heightField.Create("heightField.raw" , 1024, 1024);
 }
 
