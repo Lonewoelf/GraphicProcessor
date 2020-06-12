@@ -146,4 +146,8 @@ Used: <br>
 `extern "C" {
 	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
     }` <br>
-To make the application run on Nvidea graphics instead of the intergrated graphics card. <br>
+To make the application runs on Nvidea graphics instead of the intergrated graphics card. <br>
+
+[07-06-2020] <br>
+<img src="/Images/RawRender.png" width="500"> <br>
+Completed part 1 - 3 of the terrain tutorial resulting in the above image. <br>
