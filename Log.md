@@ -151,3 +151,8 @@ To make the application runs on Nvidea graphics instead of the intergrated graph
 [07-06-2020] <br>
 <img src="/Images/RawRender.png" width="500"> <br>
 Completed part 1 - 3 of the terrain tutorial resulting in the above image. <br>
+
+[12-06-2020] <br>
+<img src="/Images/WhiteScape.png" width="500"> <br>
+
+Finished part 4, resulting in all dots being connected, this resulted in the above image. <br>
