@@ -164,3 +164,6 @@ even though this one is widely recommended. <br>
 
 [15-06-2020] <br>
 Resumed the search for a solution to the LIBC.lib problem, howevever I didn't find a solution to it just yet. <br>
+The only widely used solution seems to be, making VS ignore the LIBC.lib dependencie. <br>
+However this causes multiple functions (fprints, sprits etc) to be unknown to the linker. <br>
+So it only seems to move the problem, instead of removing it. <br>
