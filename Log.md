@@ -156,3 +156,11 @@ Completed part 1 - 3 of the terrain tutorial resulting in the above image. <br>
 <img src="/Images/WhiteScape.png" width="500"> <br>
 
 Finished part 4, resulting in all dots being connected, this resulted in the above image. <br>
+Started part 5, resulting in a "Cannot open LIBC.lib file" problem in the jpg library. <br>
+
+[13-06-2020] <br>
+Tried resolving the "Cannot open LIBC.lib file" problem, without succes.  <br> It would probably be a good idea to look into other libraries, 
+even though this one is widely recommended. <br>
+
+[15-06-2020] <br>
+Resumed the search for a solution to the LIBC.lib problem, howevever I didn't find a solution to it just yet. <br>
