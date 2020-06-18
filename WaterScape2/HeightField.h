@@ -1,6 +1,7 @@
 #pragma once
-#include <string>
 #include <windows.h>
+
+#include <string>
 
 #define MAP_SIZE_X 1024
 #define MAP_SIZE_Y 1024
@@ -17,5 +18,6 @@ private:
 	BYTE hHeightField[1024][1024];
 	int hmHeight;
 	int hmWidth;
+	unsigned int tID[2];
 };
 

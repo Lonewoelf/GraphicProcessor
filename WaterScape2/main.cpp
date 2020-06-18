@@ -1,3 +1,5 @@
+#include <windows.h>
+
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <GL/GLUT.h>
@@ -5,7 +7,6 @@
 #include <math.h>
 #include <corecrt_math_defines.h>
 
-#include <windows.h>
 #include <iostream>
 #include <string.h>
 #include <fstream>
