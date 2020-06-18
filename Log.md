@@ -22,9 +22,8 @@ one of the first things that pops up is the following: <br>
 OpenGL is mostly used for computer graphics, it is a graphics API. <br>
 OpenCL is mostly used for parallel computing, it is a computation API. <br>
 
-Since I prefer to produce something visual rather than just performing calculations.
-It would also be nice to create something that I could use to make my room look nicer.
-An added bonus is that there seem to be more examples for OpenGL than for OpenCL.
+Since I prefer to produce something visual rather than just performing calculations, <br>
+I prefered getting into OpenGL rather than OpenCL.
 
 <a name="GL"></a>
 ## Information on OpenGL
@@ -50,7 +49,10 @@ Example terrain: <br>
 <a name="Goal"></a>
 ## Goal
 
-Maybe creating a water pool with some terrain around it? possibly with user interaction, maybe flying through the created terrain?
+The goal is to learn as much as possible about OpenGL in the given time, <br> 
+this will be done by creating a simple mountain or hill landscape. <br>
+It might also contain a water element, but his depends a lot on how much time is left after <br>
+learning the basics and creating a mountain / hill landscape. <br>
 
 <a name="Plan"></a>
 ## Plan
@@ -65,9 +67,9 @@ Maybe creating a water pool with some terrain around it? possibly with user inte
 Started researching how 3D water is created in OpenGL <br>
 Started trying out: https://www.gamedev.net/reference/articles/article915.asp <br>
 Finished part 1 of the tutorial <br>
-Found out that the tutorial does not uses OpenGL. <br>
+Found out that the tutorial does not use OpenGL. <br>
 Started looking at: https://github.com/gametutorials/tutorials/tree/master/OpenGL/Height%20Map <br>
-Started looking at Examples\Terrain+Water_tutorial\Height Map + Started creating my own
+Started looking at Examples\Terrain+Water_tutorial\Height Map + Started creating my own.
 
 [26-04-2020] <br>
 Continued creating my own 3D terrain (Loading in RAW file)
