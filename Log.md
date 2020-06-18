@@ -167,3 +167,12 @@ Resumed the search for a solution to the LIBC.lib problem, howevever I didn't fi
 The only widely used solution seems to be, making VS ignore the LIBC.lib dependency. <br>
 However this causes multiple functions (fprints, sprits etc) to be unknown to the linker. <br>
 So it only seems to move the problem, instead of removing it. <br>
+
+[16-06-2020] <br>
+Resumed the search for a solution to the LIBC.lib problem, found out that adding `legacy_stdio_definitions.lib` <br>
+to the Additional dependencies list resolves all linking errors, except: <br>
+`LNK2019   unresolved external symbol __iob referenced in function _output_message`<br>
+Which I haven't found a solution for just yet. <br>
+
+[18-06-2020] <br>
+Resumed the search for a solution for the `__iob` linking problem. 
