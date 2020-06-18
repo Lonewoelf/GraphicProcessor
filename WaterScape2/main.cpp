@@ -77,7 +77,7 @@ void display(void) {
 void Init(void) {
 	glEnable(GL_DEPTH_TEST);
 
-	heightField.Create(" " , 1024, 1024);
+	heightField.Create("heightField.raw", 1024, 1024);
 }
 
 void mouseMovement(int x, int y) {
