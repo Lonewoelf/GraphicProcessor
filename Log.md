@@ -59,6 +59,7 @@ learning the basics and creating a mountain / hill landscape. <br>
 
 1. Following the swiftless OpenGL tutorial 1 - 24
 2. Following the swiftless terrain OpenGL tutorial
+3. Follow https://www.gamedev.net/reference/articles/article915.asp to add water to the landscape.
 
 <a name="PtG"></a>
 ## Path to Goal
