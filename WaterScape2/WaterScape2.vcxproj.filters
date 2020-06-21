@@ -41,5 +41,20 @@
     <None Include="heightField.raw">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="heightField2.raw">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="heightField4.raw">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="heightField5.raw">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="heightField5_1.raw">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="heightField6.raw">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

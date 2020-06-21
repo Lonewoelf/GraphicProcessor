@@ -77,7 +77,7 @@ void display(void) {
 void Init(void) {
 	glEnable(GL_DEPTH_TEST);
 
-	heightField.Create("heightField.raw", 1024, 1024);
+	heightField.Create("heightField.raw", 1142, 1142);
 }
 
 void mouseMovement(int x, int y) {
@@ -88,7 +88,6 @@ void mouseMovement(int x, int y) {
 	lasty = y;
 	xrot += ((float)diffy / MOUSE_SENSIVITY);
 	yrot += ((float)diffx / MOUSE_SENSIVITY);
-
 }
 
 void keyboard(unsigned char key, int x, int y) {

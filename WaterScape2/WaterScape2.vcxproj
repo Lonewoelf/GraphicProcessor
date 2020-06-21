@@ -161,6 +161,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="heightField.raw" />
+    <None Include="heightField2.raw" />
+    <None Include="heightField4.raw" />
+    <None Include="heightField5.raw" />
+    <None Include="heightField5_1.raw" />
+    <None Include="heightField6.raw" />
     <None Include="packages.config" />
     <None Include="texture.raw" />
   </ItemGroup>
