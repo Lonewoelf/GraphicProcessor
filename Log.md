@@ -183,4 +183,5 @@ Resumed the search for a solution for the `__iob` linking problem.
 [21-06-2020] <br>
 Resumed the search for a solution for the `__iob` linking problem. <br>
 Found out that the jpglib given by the tutorial is very old,<br>
-so I tried finding the newest sources for the code, in order to compile it.
+so I tried finding the newest sources for the code, in order to compile it. <br>
+Building the jpeglib from scratch did not resolve the issue, because the built lib is recognized as corrupt, by VS. <br>
