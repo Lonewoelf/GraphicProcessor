@@ -179,3 +179,8 @@ Which I haven't found a solution for just yet. <br>
 
 [18-06-2020] <br>
 Resumed the search for a solution for the `__iob` linking problem. 
+
+[21-06-2020] <br>
+Resumed the search for a solution for the `__iob` linking problem. <br>
+Found out that the jpglib given by the tutorial is very old,<br>
+so I tried finding the newest sources for the code, in order to compile it.
