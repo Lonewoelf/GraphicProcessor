@@ -1,7 +1,8 @@
 #pragma once
 #include <windows.h>
-
+#include "swl.h"
 #include <jpeglib.h>
+
 
 tImageJPG* SwiftLoadJpeg(const char* srFileName);
 

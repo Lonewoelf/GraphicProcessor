@@ -2,6 +2,8 @@
 
 #include <gl\gl.h>
 #include <gl\glut.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "jpeg.h"
 
